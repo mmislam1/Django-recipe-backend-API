@@ -4,9 +4,23 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
 
 class UserManager(BaseUserManager):
     def create_user(self,email,password=None,**extras):
+        if email=='':
+            raise ValueError("Email address not valid.")
+        
         user=self.model(email,**extras)
         user.set_password(password)
 
+        user.save()
+
+        return user
+    
+    def create_admin_user(self,email,password=None,**extras):
+        if email=='':
+            raise ValueError("Email address not valid.")
+        
+        user=self.model(email,**extras)
+        user.set_password(password)
+        user.is_admin=True
         user.save()
 
         return user
@@ -22,4 +36,4 @@ class User(AbstractBaseUser,PermissionsMixin):
     objects=UserManager()
     USERNAME_FIELD='email'
 
-    
+
