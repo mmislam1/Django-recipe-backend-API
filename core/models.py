@@ -12,4 +12,14 @@ class UserManager(BaseUserManager):
         return user
     
 
+
+class User(AbstractBaseUser,PermissionsMixin):
+    email=models.EmailField(max_length=100,unique=True)
+    name=models.CharField(max_length=255)
+    is_active=models.BooleanField(default=True)
+    is_admin=models.BooleanField(default=False)
+
+    objects=UserManager()
+    USERNAME_FIELD='email'
+
     
