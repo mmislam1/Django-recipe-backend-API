@@ -14,13 +14,13 @@ class UserManager(BaseUserManager):
 
         return user
     
-    def create_admin_user(self,email,password=None,**extras):
+    def create_superuser(self,email,password=None,**extras):
         if email=='':
             raise ValueError("Email address not valid.")
         
         user=self.model(email,**extras)
         user.set_password(password)
-        user.is_admin=True
+        user.is_staff=True
         user.save()
 
         return user
