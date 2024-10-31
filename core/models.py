@@ -7,7 +7,7 @@ class UserManager(BaseUserManager):
         if email=='':
             raise ValueError("Email address not valid.")
         
-        user=self.model(email,**extras)
+        user=self.model(email=email,**extras)
         user.set_password(password)
 
         user.save()
@@ -18,7 +18,7 @@ class UserManager(BaseUserManager):
         if email=='':
             raise ValueError("Email address not valid.")
         
-        user=self.model(email,**extras)
+        user=self.model(email=email,**extras)
         user.set_password(password)
         user.is_staff=True
         user.save()
