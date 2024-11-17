@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-**This is a course go along project**
-=======
 ## Setting up
 
 1. Create a virtual environment
@@ -81,4 +78,3 @@ DATABASES = {
     }
 }
 ```
->>>>>>> 4e6b3bb (docker)
